@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\TrafficRender;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Traffic */
@@ -14,9 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_render')->textInput() ?>
+    <?= $form->field($model, 'id_render')->dropDownList(ArrayHelper::map(TrafficRender::find()->asArray()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'discount')->textInput() ?>
+    <?= $form->field($model, 'discount')->checkbox() ?>
 
     <?= $form->field($model, 'discDescription')->textInput(['maxlength' => true]) ?>
 
@@ -24,18 +26,29 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'discPrice')->textInput() ?>
 
-    <?= $form->field($model, 'is_archived')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'deleted_at')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    document.getElementById('traffic-discdescription').parentElement.style.display = "none";
+    document.getElementById('traffic-discexpiration').parentElement.style.display = "none";
+    document.getElementById('traffic-discprice').parentElement.style.display = "none";
+
+    document.getElementById('traffic-discount').addEventListener('click', ev => {
+        if(ev.target.checked) {
+            document.getElementById('traffic-discdescription').parentElement.style.display = "block";
+            document.getElementById('traffic-discexpiration').parentElement.style.display = "block";
+            document.getElementById('traffic-discprice').parentElement.style.display = "block";
+        }else {
+            document.getElementById('traffic-discdescription').parentElement.style.display = "none";
+            document.getElementById('traffic-discexpiration').parentElement.style.display = "none";
+            document.getElementById('traffic-discprice').parentElement.style.display = "none";
+        }
+    })
+</script>

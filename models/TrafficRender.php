@@ -20,7 +20,7 @@ use Yii;
  * @property TrafficTime $time
  * @property TrafficType $type
  */
-class TrafficRender extends \yii\db\ActiveRecord
+class TrafficRender extends Model
 {
     /**
      * {@inheritdoc}
@@ -37,7 +37,7 @@ class TrafficRender extends \yii\db\ActiveRecord
     {
         return [
             [['id_type', 'id_time'], 'integer'],
-            [['price', 'created_at', 'updated_at'], 'required'],
+            [['name', 'price'], 'required'],
             [['price'], 'number'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['name'], 'string', 'max' => 50],
@@ -53,9 +53,9 @@ class TrafficRender extends \yii\db\ActiveRecord
     {
         return [
             'id' => '#',
-            'name' => 'Name',
-            'id_type' => 'Тип',
-            'id_time' => 'Время',
+            'name' => 'Название',
+            'id_type' => '#Тип',
+            'id_time' => '#Время',
             'price' => 'Стоимость',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата последнего обновления',

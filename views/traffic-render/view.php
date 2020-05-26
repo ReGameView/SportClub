@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Client */
+/* @var $model app\models\TrafficRender */
 
-$this->title = $model->FullName;
-$this->params['breadcrumbs'][] = ['label' => 'Клиенты', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Тарифы-Рендеры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="client-view">
+<div class="traffic-render-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы действительно хотите удалить клиента?',
+                'confirm' => 'Вы действительно хотите удалить Рендер?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,13 +30,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'first_name',
-            'double_name',
-            'patronymic',
-            'sex',
-            'avatar',
-            'phone_number',
-            'email:email',
+            'name',
+            [
+                'attribute' => 'Время',
+                'value' => function ($data) {
+                    return $data->time->name;
+                },
+            ],
+            [
+                'attribute' => 'Тип',
+                'value' => function ($data) {
+                    return $data->type->name;
+                },
+            ],
+            'price',
             'created_at',
             'updated_at',
             'deleted_at',

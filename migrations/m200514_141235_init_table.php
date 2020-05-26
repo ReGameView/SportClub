@@ -22,8 +22,8 @@ class m200514_141235_init_table extends Migration
             'avatar' => $this->string(255)->comment('Фотография'),
             'phone_number' => $this->string(50)->comment('Номер телефона'),
             'email' => $this->string(255)->comment('E-mail'),
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
@@ -41,35 +41,35 @@ class m200514_141235_init_table extends Migration
 
             'information' => $this->text()->comment("Информация о тренере"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
         $this->createTable('traffic', [
             'id' => $this->primaryKey()->comment("#"),
             'name' => $this->string(50)->notNull()->comment("Название тарифа"),
-            'id_render' => $this->integer()->comment("Список рендеров"),
+            'id_render' => $this->integer()->comment("#Рендер"),
             'discount' => $this->boolean()->defaultValue(false)->comment("Наличие скидки"),
             'discDescription' => $this->string(255)->comment("Описание скидки"),
             'discExpiration' => $this->timestamp()->comment("Дата окончания скидки"),
             'discPrice' => $this->double()->comment("Стоимость при скидке"),
-            'is_archived' => $this->boolean()->comment("Архивирован ли тариф"),
+            'is_archived' => $this->boolean()->defaultValue(false)->comment("Архивирован ли тариф"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
         $this->createTable('traffic_render', [
             'id' => $this->primaryKey()->comment("#"),
             'name' => $this->string(50),
-            'id_type' => $this->integer()->comment("Тип"),
-            'id_time' => $this->integer()->comment("Время"),
+            'id_type' => $this->integer()->comment("#Тип"),
+            'id_time' => $this->integer()->comment("#Время"),
             'price' => $this->double()->notNull()->comment("Стоимость"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
@@ -91,8 +91,8 @@ class m200514_141235_init_table extends Migration
             'information' => $this->text()->comment("Информация по залу"),
             'is_worked' => $this->boolean()->comment("Работает ли зал"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
@@ -106,8 +106,8 @@ class m200514_141235_init_table extends Migration
             'id_trener' => $this->integer()->comment("#Тренер"),
             'id_hall' => $this->integer()->comment("#Зал"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления')
         ]);
 
@@ -123,9 +123,9 @@ class m200514_141235_init_table extends Migration
             'id_traffic' => $this->integer()->comment("#Тариф"),
             'price' => $this->double()->comment("Цена"),
 
-            'created_at' => $this->timestamp()->notNull()->comment('Дата создания'),
+            'created_at' => $this->timestamp()->comment('Дата создания'),
             'expirated_at' => $this->timestamp()->comment('Дата истечения билета'),
-            'updated_at' => $this->timestamp()->notNull()->comment('Дата последнего обновления'),
+            'updated_at' => $this->timestamp()->comment('Дата последнего обновления'),
             'deleted_at' => $this->timestamp()->comment('Дата удаления'),
         ]);
 

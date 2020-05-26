@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute' => 'FIO',
+                'attribute' => 'FullName',
                 'header' => 'ФИО Тренера',
                 'content' => function($data) {
-                    return $data->getFIO();
+                    return $data->getFullName();
                 },
             ],
             [

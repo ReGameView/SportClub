@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Traffic */
 
-$this->title = 'Create Traffic';
-$this->params['breadcrumbs'][] = ['label' => 'Traffics', 'url' => ['index']];
+$this->title = 'Создание Тарифа';
+$this->params['breadcrumbs'][] = ['label' => 'Тариф', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="traffic-create">

@@ -22,7 +22,7 @@ use Yii;
  * @property Ticket[] $tickets
  * @property TrafficRender $render
  */
-class Traffic extends \yii\db\ActiveRecord
+class Traffic extends Model
 {
     /**
      * {@inheritdoc}
@@ -38,7 +38,7 @@ class Traffic extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name'], 'required'],
             [['id_render', 'discount', 'is_archived'], 'integer'],
             [['discExpiration', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['discPrice'], 'number'],
@@ -56,7 +56,7 @@ class Traffic extends \yii\db\ActiveRecord
         return [
             'id' => '#',
             'name' => 'Название тарифа',
-            'id_render' => 'Список рендеров',
+            'id_render' => '#Рендер',
             'discount' => 'Наличие скидки',
             'discDescription' => 'Описание скидки',
             'discExpiration' => 'Дата окончания скидки',

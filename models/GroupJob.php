@@ -23,7 +23,7 @@ use Yii;
  * @property Trener $trener
  * @property GroupJobClient[] $groupJobClients
  */
-class GroupJob extends \yii\db\ActiveRecord
+class GroupJob extends Model
 {
     /**
      * {@inheritdoc}

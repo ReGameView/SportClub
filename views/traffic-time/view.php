@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Traffic */
+/* @var $model app\models\TrafficTime */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Тарифы', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Тариф-Время', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="traffic-view">
+<div class="traffic-time-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удаление', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы действительно хотите удалить этот тариф?',
+                'confirm' => 'Вы действительно хотите удалить Тариф-Время?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,15 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'id_render',
-            'discount',
-            'discDescription',
-            'discExpiration',
-            'discPrice',
-            'is_archived',
-            'created_at',
-            'updated_at',
-            'deleted_at',
         ],
     ]) ?>
 

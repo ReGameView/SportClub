@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "client".
  *
  * @property int $id #
+ * @property string $fullName ФИО
  * @property string $first_name Имя
  * @property string $double_name Фамилия
  * @property string|null $patronymic Отчество
@@ -23,7 +24,7 @@ use Yii;
  * @property GroupJobClient[] $groupJobClients
  * @property Ticket[] $tickets
  */
-class Client extends \yii\db\ActiveRecord
+class Client extends Model
 {
     /**
      * {@inheritdoc}
@@ -40,7 +41,7 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             [['first_name', 'double_name'], 'required'],
-            [['created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['created_at', 'updated_at', 'deleted_at', 'fullName'], 'safe'],
             [['first_name', 'double_name', 'patronymic'], 'string', 'max' => 50],
             [['sex'], 'string', 'max' => 1],
             [['avatar', 'email'], 'string', 'max' => 255],
@@ -55,6 +56,7 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             'id' => '#',
+            'fullName' => 'ФИО',
             'first_name' => 'Имя',
             'double_name' => 'Фамилия',
             'patronymic' => 'Отчество',
@@ -98,7 +100,7 @@ class Client extends \yii\db\ActiveRecord
         return $this->hasMany(Ticket::className(), ['id_client' => 'id']);
     }
 
-    public function getFIO()
+    public function getFullName()
     {
         return $this->double_name . ' ' . $this->first_name . ' ' . $this->patronymic;
     }

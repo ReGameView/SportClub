@@ -19,7 +19,7 @@ use Yii;
  *
  * @property GroupJob[] $groupJobs
  */
-class Hall extends \yii\db\ActiveRecord
+class Hall extends Model
 {
     /**
      * {@inheritdoc}

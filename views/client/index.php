@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -24,11 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute' => 'FIO',
+                'attribute' => 'FullName',
                 'header' => 'ФИО',
                 'value' => function($data) {
-                    return $data->FIO;
-                }
+                    return $data->FullName;
+                },
+//                'filter' => Html::activeDropDownList(
+//                    $searchModel,
+//                    'fullName',
+//                    ArrayHelper::map(, 'id', 'fullName')
+//                )
             ],
             [
                 'attribute' => 'sex',

@@ -19,7 +19,7 @@ use Yii;
  * @property Client $client
  * @property Traffic $traffic
  */
-class Ticket extends \yii\db\ActiveRecord
+class Ticket extends Model
 {
     /**
      * {@inheritdoc}
@@ -37,7 +37,7 @@ class Ticket extends \yii\db\ActiveRecord
         return [
             [['id_client', 'id_traffic'], 'integer'],
             [['price'], 'number'],
-            [['created_at', 'updated_at'], 'required'],
+            [['id_client', 'id_traffic'], 'required'],
             [['created_at', 'expirated_at', 'updated_at', 'deleted_at'], 'safe'],
             [['id_client'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['id_client' => 'id']],
             [['id_traffic'], 'exist', 'skipOnError' => true, 'targetClass' => Traffic::className(), 'targetAttribute' => ['id_traffic' => 'id']],

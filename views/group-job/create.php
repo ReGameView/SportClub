@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\GroupJob */
 
 $this->title = 'Создать Групповое занятие';
-$this->params['breadcrumbs'][] = ['label' => 'Group Jobs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Групповое занятие', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="group-job-create">

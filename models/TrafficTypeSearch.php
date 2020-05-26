@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Client;
+use app\models\TrafficType;
 
 /**
- * ClientSearch represents the model behind the search form of `app\models\Client`.
+ * TrafficTypeSearch represents the model behind the search form of `app\models\TrafficType`.
  */
-class ClientSearch extends Client
+class TrafficTypeSearch extends TrafficType
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class ClientSearch extends Client
     {
         return [
             [['id'], 'integer'],
-            [['first_name', 'double_name', 'patronymic', 'sex', 'avatar', 'phone_number', 'email', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ClientSearch extends Client
      */
     public function search($params)
     {
-        $query = Client::find();
+        $query = TrafficType::find();
 
         // add conditions that should always apply here
 
@@ -59,21 +59,10 @@ class ClientSearch extends Client
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
         ]);
 
-        $query->andFilterWhere(['like', 'first_name', $this->first_name])
-            ->andFilterWhere(['like', 'double_name', $this->double_name])
-            ->andFilterWhere(['like', 'patronymic', $this->patronymic])
-            ->andFilterWhere(['like', 'sex', $this->sex])
-            ->andFilterWhere(['like', 'avatar', $this->avatar])
-            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
-//        $query->andCo('first_name LIKE "%' . $this->fullName . '%" ' .
-//            'OR double_name LIKE "%' . $this->fullName . '%" OR patronymic LIKE "%' . $this->fullName . '%"');
         return $dataProvider;
     }
 }
